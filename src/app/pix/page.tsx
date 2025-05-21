@@ -3,9 +3,8 @@ import { useSearchParams } from "next/navigation";
 import { QRCodeCanvas } from "qrcode.react";
 import { pixPayloadProviders } from "@/core/container";
 import { PixPayloadProviderKey } from "@/core/pix/PixPayloadProvider";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { usePix } from "@/context/PixContext";
-import type { Pix } from "@/types/pix";
 
 export default function PixPage() {
   const searchParams = useSearchParams();
@@ -18,14 +17,17 @@ export default function PixPage() {
 
   const { setPix } = usePix();
 
-  const pix: Pix = {
-    nome,
-    chave,
-    valor,
-    cidade,
-    identificacao,
-    descricao,
-  };
+  const pix = useMemo(
+    () => ({
+      nome,
+      chave,
+      valor,
+      cidade,
+      identificacao,
+      descricao,
+    }),
+    [nome, chave, valor, cidade, identificacao, descricao]
+  );
 
   useEffect(() => {
     setPix(pix);
@@ -119,7 +121,8 @@ export default function PixPage() {
                 </span>
                 <button
                   onClick={handleCopy}
-                  className="px-3 py-1 rounded bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition-colors"
+                  className="h-full px-3 py-2 rounded bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition-colors flex-shrink-0"
+                  style={{ minHeight: '40px' }}
                   type="button"
                 >
                   {copied ? "Copiado!" : "Copiar"}
