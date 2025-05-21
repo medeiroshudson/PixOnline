@@ -1,4 +1,5 @@
 "use client";
+
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
@@ -26,20 +27,24 @@ export default function Home() {
 
   function handleValorChange(e: React.ChangeEvent<HTMLInputElement>) {
     let v = e.target.value.replace(/\D/g, "");
-    v = (Number(v) / 100).toFixed(2).replace(".", ",");
-    setValorMasked(v === "NaN" ? "" : v);
+    if (!v) {
+      setValorMasked("");
+      return;
+    }
+    v = (Number(v) / 100).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    setValorMasked(v);
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setErrors({});
     const formData = new FormData(formRef.current!);
-    const nome = formData.get("nome") as string;
-    const chave = formData.get("chave") as string;
+    const nome = formData.get("nome")?.toString().trim() || "";
+    const chave = formData.get("chave")?.toString().trim() || "";
     const valor = valorMasked;
-    const cidade = formData.get("cidade") as string;
-    const identificacao = formData.get("identificacao") as string;
-    const descricao = formData.get("descricao") as string;
+    const cidade = formData.get("cidade")?.toString().trim() || "";
+    const identificacao = formData.get("identificacao")?.toString().trim() || "";
+    const descricao = formData.get("descricao")?.toString().trim() || "";
     const result = pixSchema.safeParse({ nome, chave, valor, cidade, identificacao, descricao });
     if (!result.success) {
       const fieldErrors: { [k: string]: string } = {};
@@ -72,6 +77,7 @@ export default function Home() {
             <input
               name="nome"
               required={false}
+              autoComplete="off"
               className={`input input-bordered rounded px-3 py-2 focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:text-white w-full ${errors.nome ? "!border-red-500 !ring-1 !ring-red-500 focus:!ring-red-500" : ""}`}
               placeholder="Ex: João da Silva"
             />
@@ -82,6 +88,7 @@ export default function Home() {
             <input
               name="chave"
               required={false}
+              autoComplete="off"
               className={`input input-bordered rounded px-3 py-2 focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:text-white w-full ${errors.chave ? "!border-red-500 !ring-1 !ring-red-500 focus:!ring-red-500" : ""}`}
               placeholder="Ex: email, telefone ou chave aleatória"
             />
