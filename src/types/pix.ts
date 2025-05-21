@@ -4,4 +4,5 @@ export type Pix = {
   valor?: string;
   cidade?: string;
   identificacao?: string;
+  descricao?: string;
 };
