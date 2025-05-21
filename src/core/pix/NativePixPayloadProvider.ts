@@ -2,7 +2,7 @@ import type {
   PixPayloadProvider,
   PixPayloadParams,
 } from "./PixPayloadProvider";
-import { PixPayloadProviderKey } from "@/core/pix/PixPayloadProvider";
+import { PixPayloadProviderKey } from "./PixPayloadProvider";
 
 export class NativePixPayloadProvider implements PixPayloadProvider {
   static providerKey = PixPayloadProviderKey.NATIVE;

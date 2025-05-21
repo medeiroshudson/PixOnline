@@ -1,8 +1,7 @@
+import "./globals.css";
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { PixProvider } from "@/context/PixContext";
-import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,11 +31,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PixProvider>
-          <Suspense fallback={<div className="w-full text-center py-10">Carregando...</div>}>
-            {children}
-          </Suspense>
-        </PixProvider>
+        <Suspense fallback={<div className="w-full text-center py-10">Carregando...</div>}>
+          {children}
+        </Suspense>
       </body>
     </html>
   );

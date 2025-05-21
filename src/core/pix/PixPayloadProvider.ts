@@ -12,6 +12,5 @@ export type PixPayloadParams = {
 };
 
 export enum PixPayloadProviderKey {
-  NATIVE = "NATIVE_PIX_PROVIDER",
-  FAZ_UM_PIX = "FAZ_UM_PIX_PROVIDER",
+  NATIVE = "NATIVE_PIX_PROVIDER"
 }

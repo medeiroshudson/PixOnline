@@ -1,10 +1,8 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { QRCodeCanvas } from "qrcode.react";
-import { pixPayloadProviders } from "@/core/container";
-import { PixPayloadProviderKey } from "@/core/pix/PixPayloadProvider";
-import { useState, useEffect, useMemo } from "react";
-import { usePix } from "@/context/PixContext";
+import { useEffect, useMemo, useState } from "react";
+import { usePix } from "@/store/usePixStore";
 
 export default function PixPage() {
   const searchParams = useSearchParams();
@@ -15,7 +13,9 @@ export default function PixPage() {
   const identificacao = searchParams.get("identificacao") || "";
   const descricao = searchParams.get("descricao") || "";
 
-  const { setPix } = usePix();
+  const setPix = usePix((state) => state.setPix);
+  const gerarPayload = usePix((state) => state.gerarPayload);
+  const payload = usePix((state) => state.payload);
 
   const pix = useMemo(
     () => ({
@@ -31,19 +31,9 @@ export default function PixPage() {
 
   useEffect(() => {
     setPix(pix);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    gerarPayload();
   }, [pix]);
 
-  const pixPayloadProvider = pixPayloadProviders[PixPayloadProviderKey.NATIVE];
-  const [payload, setPayload] = useState<string>("");
-  useEffect(() => {
-    let isMounted = true;
-    (async () => {
-      const result = await pixPayloadProvider.gerarPayload(pix);
-      if (isMounted) setPayload(result);
-    })();
-    return () => { isMounted = false; };
-  }, [pixPayloadProvider, pix]);
   const [copied, setCopied] = useState(false);
 
   function handleCopy() {
