@@ -35,16 +35,21 @@ export default function Home() {
     setValorMasked(v);
   }
 
+  function normalizeNome(nome: string) {
+    return nome.normalize("NFD").replace(/[^\w\s]/gi, "").replace(/_/g, "");
+  }
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setErrors({});
     const formData = new FormData(formRef.current!);
-    const nome = formData.get("nome")?.toString().trim() || "";
+    let nome = formData.get("nome")?.toString().trim() || "";
     const chave = formData.get("chave")?.toString().trim() || "";
     const valor = valorMasked;
     const cidade = formData.get("cidade")?.toString().trim() || "";
     const identificacao = formData.get("identificacao")?.toString().trim() || "";
     const descricao = formData.get("descricao")?.toString().trim() || "";
+    nome = normalizeNome(nome);
     const result = pixSchema.safeParse({ nome, chave, valor, cidade, identificacao, descricao });
     if (!result.success) {
       const fieldErrors: { [k: string]: string } = {};
