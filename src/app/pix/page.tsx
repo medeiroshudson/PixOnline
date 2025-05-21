@@ -1,10 +1,12 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { QRCodeCanvas } from "qrcode.react";
-import { gerarPayloadPix } from "@/utils/pixUtils";
+import { container } from "@/core/container";
+import type { PixPayloadProvider } from "@/core/pix/PixPayloadProvider";
 import { useState, useEffect } from "react";
 import { usePix } from "@/context/PixContext";
 import type { Pix } from "@/types/pix";
+import { PixPayloadProviderKey } from "@/core/pix/PixPayloadProvider";
 
 export default function PixPage() {
   const searchParams = useSearchParams();
@@ -31,10 +33,21 @@ export default function PixPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nome, chave, valor, cidade, identificacao, descricao]);
 
-  const payload = gerarPayloadPix(pix);
+  const [payload, setPayload] = useState<string>("");
+  const pixPayloadProvider = container.resolve<PixPayloadProvider>(PixPayloadProviderKey.NATIVE);
+
+  useEffect(() => {
+    let isMounted = true;
+    (async () => {
+      const result = await pixPayloadProvider.gerarPayload(pix);
+      if (isMounted) setPayload(result);
+    })();
+    return () => { isMounted = false; };
+  }, [pixPayloadProvider, nome, chave, valor, cidade, identificacao, descricao]);
   const [copied, setCopied] = useState(false);
 
   function handleCopy() {
+    if (!payload) return;
     navigator.clipboard.writeText(payload);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
@@ -44,11 +57,13 @@ export default function PixPage() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-white via-gray-100 to-gray-200 dark:from-black dark:via-gray-900 dark:to-gray-800 p-4">
       <main className="w-full max-w-md mx-auto">
         <div className="flex flex-col items-center gap-4">
-          <QRCodeCanvas
-            value={payload}
-            size={180}
-            className="mx-auto w-full max-w-[180px] h-auto"
-          />
+          {payload && (
+            <QRCodeCanvas
+              value={payload}
+              size={180}
+              className="mx-auto w-full max-w-[180px] h-auto"
+            />
+          )}
           <div className="w-full bg-white/90 dark:bg-gray-900/90 rounded-2xl p-6 flex flex-col gap-4 shadow-xl border border-gray-200 dark:border-gray-800">
             <div className="flex flex-col gap-1 text-base">
               <span className="font-semibold text-gray-700 dark:text-gray-200">
