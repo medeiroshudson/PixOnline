@@ -1,12 +1,11 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { QRCodeCanvas } from "qrcode.react";
-import { container } from "@/core/container";
-import type { PixPayloadProvider } from "@/core/pix/PixPayloadProvider";
+import { pixPayloadProviders } from "@/core/container";
+import { PixPayloadProviderKey } from "@/core/pix/PixPayloadProvider";
 import { useState, useEffect } from "react";
 import { usePix } from "@/context/PixContext";
 import type { Pix } from "@/types/pix";
-import { PixPayloadProviderKey } from "@/core/pix/PixPayloadProvider";
 
 export default function PixPage() {
   const searchParams = useSearchParams();
@@ -31,11 +30,10 @@ export default function PixPage() {
   useEffect(() => {
     setPix(pix);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nome, chave, valor, cidade, identificacao, descricao]);
+  }, [pix]);
 
+  const pixPayloadProvider = pixPayloadProviders[PixPayloadProviderKey.NATIVE];
   const [payload, setPayload] = useState<string>("");
-  const pixPayloadProvider = container.resolve<PixPayloadProvider>(PixPayloadProviderKey.NATIVE);
-
   useEffect(() => {
     let isMounted = true;
     (async () => {
@@ -43,7 +41,7 @@ export default function PixPage() {
       if (isMounted) setPayload(result);
     })();
     return () => { isMounted = false; };
-  }, [pixPayloadProvider, nome, chave, valor, cidade, identificacao, descricao]);
+  }, [pixPayloadProvider, pix]);
   const [copied, setCopied] = useState(false);
 
   function handleCopy() {

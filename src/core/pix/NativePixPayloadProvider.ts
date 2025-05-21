@@ -1,12 +1,9 @@
-// src/core/pix/NativePixPayloadProvider.ts
-import { injectable } from "tsyringe";
 import type {
   PixPayloadProvider,
   PixPayloadParams,
 } from "./PixPayloadProvider";
 import { PixPayloadProviderKey } from "@/core/pix/PixPayloadProvider";
 
-@injectable()
 export class NativePixPayloadProvider implements PixPayloadProvider {
   static providerKey = PixPayloadProviderKey.NATIVE;
 
@@ -21,7 +18,7 @@ export class NativePixPayloadProvider implements PixPayloadProvider {
     // (0xFFFF)
     function crc16(str: string) {
       let crc = 0xffff;
-      for (let c of str) {
+      for (const c of str) {
         crc ^= c.charCodeAt(0) << 8;
         for (let i = 0; i < 8; i++) {
           if ((crc & 0x8000) !== 0) {
