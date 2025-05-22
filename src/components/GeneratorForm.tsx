@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { pixSchema } from "../types/pix";
+import { siteConfig } from "../../config/site";
 
 export default function GeneratorForm() {
   const router = useRouter();

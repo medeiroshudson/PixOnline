@@ -3,22 +3,23 @@ import GeneratorForm from "../components/GeneratorForm";
 import FaqSection from "../components/FaqSection";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import ContrastAlert from "../components/ContrastAlert";
+import { siteConfig } from "../../config/site";
 
 export const metadata: Metadata = {
-  title: "PIX Online - Gerador de QR Code PIX Grátis",
-  description: "Crie códigos PIX personalizados gratuitamente online. Ferramenta completa para gerar QR Code PIX e link de pagamento para transferências instantâneas.",
-  keywords: "pix, qr code pix, gerador pix, pagamento pix, transferência pix",
+  title: `${siteConfig.name} - Gerador de QR Code PIX Grátis`,
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
   openGraph: {
-    title: "PIX Online - Gerador de QR Code PIX Grátis",
-    description: "Crie códigos PIX personalizados gratuitamente online. Ferramenta para gerar QR Code PIX e link de pagamento.",
-    url: "https://pixonline.com.br",
-    siteName: "PIX Online",
+    title: `${siteConfig.name} - Gerador de QR Code PIX Grátis`,
+    description: siteConfig.shortDescription,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     images: [
       {
-        url: "/og-image.jpg", 
+        url: siteConfig.images.ogImage,
         width: 1200,
         height: 630,
-        alt: "PIX Online - Gerador de QR Code PIX"
+        alt: `${siteConfig.name} - Gerador de QR Code PIX`
       }
     ],
     locale: "pt_BR",
@@ -26,12 +27,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PIX Online - Gerador de QR Code PIX Grátis",
-    description: "Crie códigos PIX personalizados gratuitamente online",
-    images: ["/twitter-image.jpg"],
+    title: `${siteConfig.name} - Gerador de QR Code PIX Grátis`,
+    description: siteConfig.shortDescription,
+    images: [siteConfig.images.twitterImage],
   },
   alternates: {
-    canonical: "https://pixonline.com.br",
+    canonical: siteConfig.url,
   },
 };
 
@@ -42,21 +43,19 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-4 relative">
             <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
               <ThemeSwitcher />
-            </div>
-            <h1 className="text-4xl font-extrabold text-center text-foreground dark:text-white drop-shadow">
-              PIX Online <span className="text-blue-600 dark:text-blue-400">Gerador Grátis</span>
+            </div>            <h1 className="text-4xl font-extrabold text-center text-foreground dark:text-white drop-shadow">
+              {siteConfig.name} <span className="text-blue-600 dark:text-blue-400">Gerador Grátis</span>
             </h1>
           </div>
         </header>
 
         <main className="flex-1 w-full max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-12 items-start">          <section className="flex flex-col gap-6">
-            <div className="prose dark:prose-invert">              <h2 className="text-3xl font-bold dark:text-white mb-6">Gere códigos PIX facilmente</h2>
-              <p className="text-lg text-gray-700 dark:text-gray-200">
-                Com o PIX Online, você pode criar códigos PIX personalizados em segundos. 
+            <div className="prose dark:prose-invert">              <h2 className="text-3xl font-bold dark:text-white mb-6">Gere códigos PIX facilmente</h2>              <p className="text-lg text-gray-700 dark:text-gray-200">
+                Com o {siteConfig.name}, você pode criar códigos PIX personalizados em segundos.
                 Seja para cobranças, doações ou pagamentos recorrentes, nossa ferramenta 
                 garante transações seguras e eficientes.
               </p>
-                <h3 className="text-xl font-semibold mt-10 mb-4 dark:text-white">Vantagens do PIX Online</h3>
+                <h3 className="text-xl font-semibold mt-10 mb-4 dark:text-white">Vantagens do {siteConfig.name}</h3>
               <ul className="space-y-2 dark:text-gray-200">
                 <li>✅ Totalmente grátis e sem cadastro</li>
                 <li>✅ Geração instantânea de QR Code</li>
@@ -114,13 +113,12 @@ export default function Home() {
         </main>
         
         <FaqSection />
-        
-        <footer className="w-full py-8 bg-white/50 dark:bg-black/50 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800">          <div className="max-w-6xl mx-auto px-4 text-center">
+          <footer className="w-full py-8 bg-white/50 dark:bg-black/50 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800">          <div className="max-w-6xl mx-auto px-4 text-center">
             <p className="text-sm text-gray-600 dark:text-gray-300">
-              © {new Date().getFullYear()} PIX Online - Ferramenta gratuita para geração de QR Code PIX
+              {siteConfig.copyright}
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-300 mt-2">
-              PIX é uma marca registrada do Banco Central do Brasil
+              {siteConfig.disclaimer}
             </p>
           </div>
         </footer>

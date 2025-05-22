@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "next-themes";
+import { siteConfig } from "../../config/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,27 +17,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pixonline.com.br"),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "PIX Online - Gerador de QR Code PIX",
-    template: "%s | PIX Online"
+    default: `${siteConfig.name} - Gerador de QR Code PIX`,
+    template: `%s | ${siteConfig.name}`
   },
-  description: "Gerador de QR Code PIX - Crie códigos para pagamentos PIX facilmente e de forma gratuita",
-  applicationName: "PIX Online",
-  authors: [{ name: "PIX Online Team" }],
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: `${siteConfig.name} Team` }],
   generator: "Next.js",
-  keywords: ["pix", "qr code", "pagamento", "transferência", "banco central", "gerador pix"],
+  keywords: siteConfig.keywords.split(",").map(keyword => keyword.trim()),
   referrer: "origin-when-cross-origin",
-  creator: "PIX Online",
-  publisher: "PIX Online",
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   formatDetection: {
     email: true,
     address: true,
     telephone: true,
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-icon.png",
+    icon: siteConfig.images.icon,
+    apple: siteConfig.images.appleIcon,
   },
   robots: {
     index: true,
@@ -82,9 +83,9 @@ export default function RootLayout({
             {
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              "name": "PIX Online - Gerador de QR Code PIX",
-              "description": "Crie códigos PIX personalizados gratuitamente online. Ferramenta completa para gerar QR Code PIX.",
-              "url": "https://pixonline.com.br",
+              "name": "${siteConfig.name} - Gerador de QR Code PIX",
+              "description": "${siteConfig.description}",
+              "url": "${siteConfig.url}",
               "applicationCategory": "FinanceApplication",
               "operatingSystem": "Web",
               "offers": {

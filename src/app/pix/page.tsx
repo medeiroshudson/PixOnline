@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { usePix } from "@/store/usePixStore";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 import Link from "next/link";
+import { siteConfig } from "../../../config/site";
 
 export default function PixPage() {
   const searchParams = useSearchParams();
@@ -53,11 +54,10 @@ export default function PixPage() {
     setLinkCopied(true);
     setTimeout(() => setLinkCopied(false), 1500);
   }
-
   // Função para compartilhar nas redes sociais
   function shareOnSocial(platform: string) {
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent(`Faça um PIX para ${nome}!`);
+    const text = encodeURIComponent(`Faça um PIX para ${nome} via ${siteConfig.name}!`);
 
     let shareUrl = "";
     switch (platform) {
@@ -230,10 +230,12 @@ export default function PixPage() {
             Criar link de pagamento
           </Link>
         </div>
-        
-        <p className="mt-6 mb-8 text-center text-gray-500 text-xs dark:text-gray-300">
+          <p className="mt-6 mb-8 text-center text-gray-500 text-xs dark:text-gray-300">
           Nenhuma informação é salva. Tudo é gerado localmente e compartilhado via
           link.
+        </p>
+        <p className="mb-4 text-center text-gray-500 text-xs dark:text-gray-300">
+          {siteConfig.copyright}
         </p>
       </main>
     </div>
