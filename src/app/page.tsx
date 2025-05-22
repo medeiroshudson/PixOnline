@@ -38,16 +38,46 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (    <>
-      <ContrastAlert />
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-white via-gray-100 to-gray-200 dark:from-black dark:via-gray-900 dark:to-gray-800">        <header className="w-full py-8 bg-white/50 dark:bg-black/50 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+      <ContrastAlert />      <div className="min-h-screen flex flex-col bg-gradient-to-br from-white via-gray-100 to-gray-200 dark:from-black dark:via-gray-900 dark:to-gray-800">        <header className="w-full py-8 bg-white/50 dark:bg-black/50 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
           <div className="max-w-6xl mx-auto px-4 relative">
-            <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10 flex items-center gap-3">
+              {/* Botões de autenticação */}
+              <div className="hidden sm:flex items-center gap-2">
+                <a 
+                  href="/login"
+                  className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-sm border border-blue-600"
+                >
+                  Login
+                </a>
+                <button 
+                  disabled
+                  className="px-4 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed shadow-sm border border-gray-300 dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600"
+                >
+                  Cadastrar
+                </button>
+              </div>
               <ThemeSwitcher />
             </div>            <h1 className="text-4xl font-extrabold text-center text-foreground dark:text-white drop-shadow">
               {siteConfig.name} <span className="text-blue-600 dark:text-blue-400">Gerador Grátis</span>
             </h1>
           </div>
         </header>
+        
+        {/* Botões de autenticação para mobile */}
+        <div className="sm:hidden flex justify-center gap-3 py-3 bg-white/90 dark:bg-gray-900/90 shadow-sm">
+          <a 
+            href="/login"
+            className="px-6 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-sm border border-blue-600 flex-1 max-w-[160px] text-center"
+          >
+            Login
+          </a>
+          <button 
+            disabled
+            className="px-6 py-2 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed shadow-sm border border-gray-300 dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600 flex-1 max-w-[160px]"
+          >
+            Cadastrar
+          </button>
+        </div>
 
         <main className="flex-1 w-full max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-12 items-start">          <section className="flex flex-col gap-6">
             <div className="prose dark:prose-invert">              <h2 className="text-3xl font-bold dark:text-white mb-6">Gere códigos PIX facilmente</h2>              <p className="text-lg text-gray-700 dark:text-gray-200">

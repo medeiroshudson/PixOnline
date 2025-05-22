@@ -6,7 +6,9 @@ Gere links e placas Pix customizadas de forma simples e rápida!
 - Formulário para gerar QR Code Pix e código copia e cola.
 - Compartilhamento via link com todos os dados do Pix na URL.
 - Visualização responsiva e moderna com Tailwind CSS.
-- Não armazena nenhum dado do usuário.
+- Dashboard para usuários autenticados com gerenciamento de PIXs.
+- Sistema de autenticação com Supabase (email/senha).
+- Área protegida para visualizar histórico e estatísticas.
 
 ## Como rodar localmente
 
@@ -28,7 +30,19 @@ npm run dev
 - **Next.js 15** (App Router)
 - **React 19**
 - **Tailwind CSS 4**
-- **Context API** para estado global
+- **Zustand** para gerenciamento de estado global
+- **Supabase** para autenticação e armazenamento
+- **React Hook Form** + **Zod** para validação de formulários
+
+## Autenticação
+O sistema possui dois provedores de autenticação intercambiáveis:
+
+1. **Supabase Auth** (padrão para produção) - autenticação com email/senha através do Supabase
+2. **Mock Auth Provider** (para desenvolvimento) - simulação de autenticação para desenvolvimento e testes
+
+Para configurar, defina a variável de ambiente `NEXT_PUBLIC_AUTH_PROVIDER` como:
+- `SUPABASE_AUTH_PROVIDER` para usar o Supabase
+- `MOCK_AUTH_PROVIDER` para usar o provedor de simulação
 - **IoC Container** para alternar implementações de geração de payload Pix
 - **Configuração Centralizada** para valores de site e metadados
 
