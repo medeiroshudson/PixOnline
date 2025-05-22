@@ -76,7 +76,7 @@ export default function Home() {
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white font-bold">2</div>
                   <div>
                     <strong className="dark:text-white">Gere o QR Code</strong>
-                    <p className="text-gray-700 dark:text-gray-300 mt-1">Clique em "Gerar Link de Pagamento" e seu QR Code será criado instantaneamente.</p>
+                    <p className="text-gray-700 dark:text-gray-300 mt-1">Clique em &quot;Gerar Link de Pagamento&quot; e seu QR Code será criado instantaneamente.</p>
                   </div>
                 </div>
                 
@@ -84,7 +84,7 @@ export default function Home() {
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white font-bold">3</div>
                   <div>
                     <strong className="dark:text-white">Compartilhe</strong>
-                    <p className="text-gray-700 dark:text-gray-300 mt-1">Envie o link ou código "Copia e Cola" para quem vai fazer o pagamento.</p>
+                    <p className="text-gray-700 dark:text-gray-300 mt-1">Envie o link ou código &quot;Copia e Cola&quot; para quem vai fazer o pagamento.</p>
                   </div>
                 </div>
                 
