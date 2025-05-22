@@ -66,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <head>
-        <link rel="canonical" href="https://pixonline.com.br" />
+        <link rel="canonical" href={siteConfig.url} />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

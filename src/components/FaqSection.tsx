@@ -82,7 +82,7 @@ export default function FaqSection() {
           ))}
         </div>        <div className="mt-8 text-center">
           <p className="text-lg text-gray-700 dark:text-gray-200">
-            Ainda tem dúvidas? Entre em contato pelo <a href="mailto:contato@pixonline.com.br" className="text-blue-500 hover:text-blue-400 dark:text-blue-400 dark:hover:text-blue-300 hover:underline">contato@pixonline.com.br</a>
+            Ainda tem dúvidas? Entre em contato pelo <a href="mailto:contato@" className="text-blue-500 hover:text-blue-400 dark:text-blue-400 dark:hover:text-blue-300 hover:underline">medeiroshudson@outlook.com</a>
           </p>
         </div>
       </div>

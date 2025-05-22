@@ -7,7 +7,7 @@ const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Faz Um PIX";
 export const siteConfig = {
   // Informações básicas do site
   name: siteName,
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://pix-online.netlify.app/",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://pix-online.netlify.app",
   
   // Descrição e detalhes
   description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION || 

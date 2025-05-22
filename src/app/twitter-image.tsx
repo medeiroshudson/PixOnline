@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { siteConfig } from "../../config/site";
 
 export const runtime = "edge";
 export const alt = "PIX Online - Gerador de QR Code PIX";
@@ -95,7 +96,7 @@ export default async function Image() {
               textAlign: "center",
             }}
           >
-            pixonline.com.br
+            {siteConfig.url}
           </div>
         </div>
       </div>
