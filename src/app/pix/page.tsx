@@ -4,7 +4,6 @@ import { QRCodeCanvas } from "qrcode.react";
 import { useEffect, useMemo, useState } from "react";
 import { usePix } from "@/store/usePixStore";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
-import ContrastAlert from "@/components/ContrastAlert";
 
 export default function PixPage() {
   const searchParams = useSearchParams();

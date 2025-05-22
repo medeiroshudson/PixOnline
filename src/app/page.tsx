@@ -50,28 +50,52 @@ export default function Home() {
         </header>
 
         <main className="flex-1 w-full max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-12 items-start">          <section className="flex flex-col gap-6">
-            <div className="prose dark:prose-invert">
-              <h2 className="text-3xl font-bold dark:text-white">Gere códigos PIX facilmente</h2>
+            <div className="prose dark:prose-invert">              <h2 className="text-3xl font-bold dark:text-white mb-6">Gere códigos PIX facilmente</h2>
               <p className="text-lg text-gray-700 dark:text-gray-200">
                 Com o PIX Online, você pode criar códigos PIX personalizados em segundos. 
                 Seja para cobranças, doações ou pagamentos recorrentes, nossa ferramenta 
                 garante transações seguras e eficientes.
               </p>
-                <h3 className="text-xl font-semibold mt-6 dark:text-white">Vantagens do PIX Online</h3>
+                <h3 className="text-xl font-semibold mt-10 mb-4 dark:text-white">Vantagens do PIX Online</h3>
               <ul className="space-y-2 dark:text-gray-200">
                 <li>✅ Totalmente grátis e sem cadastro</li>
                 <li>✅ Geração instantânea de QR Code</li>
-                <li>✅ Compartilhamento via link</li>
-                <li>✅ Valores personalizáveis</li>
+                <li>✅ Compartilhamento via link</li>                <li>✅ Valores personalizáveis</li>
                 <li>✅ Funciona com todas as chaves PIX</li>
-              </ul>
-                <h3 className="text-xl font-semibold mt-6 dark:text-white">Como funciona?</h3>
-              <ol className="space-y-2 dark:text-gray-200">
-                <li><strong className="dark:text-white">Preencha</strong> o formulário com os dados do recebedor</li>
-                <li><strong className="dark:text-white">Gere</strong> o QR Code PIX instantaneamente</li>
-                <li><strong className="dark:text-white">Compartilhe</strong> o link ou código com quem vai pagar</li>
-                <li><strong className="dark:text-white">Receba</strong> o pagamento diretamente na sua conta</li>
-              </ol>
+              </ul>                <h3 className="text-xl font-semibold mt-10 mb-4 dark:text-white">Como funciona?</h3>
+              <div className="space-y-4 dark:text-gray-200">
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white font-bold">1</div>
+                  <div>
+                    <strong className="dark:text-white">Preencha os dados</strong>
+                    <p className="text-gray-700 dark:text-gray-300 mt-1">Informe o nome, chave PIX e valor (opcional) para gerar seu código de pagamento.</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white font-bold">2</div>
+                  <div>
+                    <strong className="dark:text-white">Gere o QR Code</strong>
+                    <p className="text-gray-700 dark:text-gray-300 mt-1">Clique em "Gerar Link de Pagamento" e seu QR Code será criado instantaneamente.</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white font-bold">3</div>
+                  <div>
+                    <strong className="dark:text-white">Compartilhe</strong>
+                    <p className="text-gray-700 dark:text-gray-300 mt-1">Envie o link ou código "Copia e Cola" para quem vai fazer o pagamento.</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white font-bold">4</div>
+                  <div>
+                    <strong className="dark:text-white">Receba o pagamento</strong>
+                    <p className="text-gray-700 dark:text-gray-300 mt-1">O valor será creditado instantaneamente na conta vinculada à chave PIX informada.</p>
+                  </div>
+                </div>
+              </div>
             </div>
               <div className="bg-blue-50 dark:bg-blue-900/50 p-6 rounded-xl border border-blue-200 dark:border-blue-700">
               <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-3">Segurança Garantida</h3>
