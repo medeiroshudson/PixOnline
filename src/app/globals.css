@@ -1,1 +1,67 @@
 @import "tailwindcss";
+@import "./accessibility.css";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Definição explícita de variáveis de cores para temas */
+:root {
+  --background: 255, 255, 255;
+  --foreground: 10, 10, 10;
+  --card: 255, 255, 255;
+  --card-foreground: 10, 10, 10;
+  --popover: 255, 255, 255;
+  --popover-foreground: 10, 10, 10;
+  --primary: 37, 99, 235;
+  --primary-foreground: 250, 250, 250;
+  --secondary: 241, 245, 249;
+  --secondary-foreground: 15, 23, 42;
+  --muted: 241, 245, 249;
+  --muted-foreground: 100, 116, 139;
+  --accent: 241, 245, 249;
+  --accent-foreground: 15, 23, 42;
+  --destructive: 239, 68, 68;
+  --destructive-foreground: 250, 250, 250;
+  --border: 226, 232, 240;
+  --input: 226, 232, 240;
+
+  /* Garantir modo claro por padrão */
+  color-scheme: light;
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  --background: 10, 10, 10;
+  --foreground: 241, 245, 249;
+  --card: 30, 30, 30;
+  --card-foreground: 241, 245, 249;
+  --popover: 30, 30, 30;
+  --popover-foreground: 241, 245, 249;
+  --primary: 59, 130, 246;
+  --primary-foreground: 250, 250, 250;
+  --secondary: 30, 41, 59;
+  --secondary-foreground: 241, 245, 249;
+  --muted: 51, 65, 85;
+  --muted-foreground: 148, 163, 184;
+  --accent: 30, 41, 59;
+  --accent-foreground: 241, 245, 249;
+  --destructive: 248, 113, 113;
+  --destructive-foreground: 250, 250, 250;
+  --border: 51, 65, 85;
+  --input: 51, 65, 85;
+
+  /* Forçar modo escuro */
+  color-scheme: dark;
+  background-color: rgb(17, 24, 39); /* Equivalente ao gray-900 */
+  color: rgb(243, 244, 246); /* Equivalente ao gray-100 */
+}
+
+/* Garantir que a transição de tema seja suave */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Garantir que o body também tenha as cores de fundo corretas */
+body {
+  background-color: inherit;
+  color: inherit;
+}

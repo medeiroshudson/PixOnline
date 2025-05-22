@@ -3,6 +3,8 @@ import { useSearchParams } from "next/navigation";
 import { QRCodeCanvas } from "qrcode.react";
 import { useEffect, useMemo, useState } from "react";
 import { usePix } from "@/store/usePixStore";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
+import ContrastAlert from "@/components/ContrastAlert";
 
 export default function PixPage() {
   const searchParams = useSearchParams();
@@ -41,10 +43,11 @@ export default function PixPage() {
     navigator.clipboard.writeText(payload);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
-  }
-
-  return (
+  }  return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-white via-gray-100 to-gray-200 dark:from-black dark:via-gray-900 dark:to-gray-800 p-4">
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeSwitcher />
+      </div>
       <main className="w-full max-w-md mx-auto">
         <div className="flex flex-col items-center gap-4">
           {payload && (
@@ -105,13 +108,11 @@ export default function PixPage() {
               <span className="font-semibold text-gray-700 dark:text-gray-200">
                 Código Copia e Cola:
               </span>
-              <div className="flex items-center gap-2">
-                <span className="break-all text-xs bg-white dark:bg-black border rounded p-2 select-all flex-1 overflow-x-auto max-w-[calc(100vw-100px)] text-gray-900 dark:text-white">
+              <div className="flex items-center gap-2">                <span className="break-all text-xs bg-white dark:bg-gray-950 border rounded p-2 select-all flex-1 overflow-x-auto max-w-[calc(100vw-100px)] text-gray-900 dark:text-gray-100">
                   {payload}
-                </span>
-                <button
+                </span><button
                   onClick={handleCopy}
-                  className="h-full px-3 py-2 rounded bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 transition-colors flex-shrink-0"
+                  className="h-full px-3 py-2 rounded bg-blue-600 text-white text-xs font-semibold hover:bg-blue-500 transition-colors flex-shrink-0"
                   style={{ minHeight: '40px' }}
                   type="button"
                 >
@@ -120,8 +121,7 @@ export default function PixPage() {
               </div>
             </div>
           </div>
-        </div>
-        <p className="mt-6 text-center text-gray-500 text-xs dark:text-gray-400">
+        </div>        <p className="mt-6 text-center text-gray-500 text-xs dark:text-gray-300">
           Nenhuma informação é salva. Tudo é gerado localmente e compartilhado via
           link.
         </p>

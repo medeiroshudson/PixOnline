@@ -1,0 +1,50 @@
+@layer base {
+  html {
+    font-size: 16px; /* Base font size */
+  }
+  
+  /* Aumenta ligeiramente o tamanho da fonte em dispositivos móveis para melhor legibilidade */
+  @media (max-width: 640px) {
+    html {
+      font-size: 17px;
+    }
+  }
+  
+  /* Preferência de usuário para alto contraste */
+  @media (prefers-contrast: high) {
+    :root {
+      --color-text-base: #000000;
+      --color-text-inverted: #ffffff;
+      --color-bg-primary: #ffffff;
+      --color-bg-secondary: #f0f0f0;
+    }
+    
+    .dark {
+      --color-text-base: #ffffff;
+      --color-text-inverted: #000000;
+      --color-bg-primary: #000000;
+      --color-bg-secondary: #1a1a1a;
+    }
+    
+    /* Melhorar bordas e outlines para alto contraste */
+    button, a, input, textarea, select {
+      outline-width: 3px !important;
+      outline-color: currentColor !important;
+    }
+    
+    /* Aumentar contraste para elementos de formulário */
+    input, textarea, select {
+      border-width: 2px !important;
+    }
+  }
+  
+  /* Animações reduzidas para usuários que preferem movimento reduzido */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
