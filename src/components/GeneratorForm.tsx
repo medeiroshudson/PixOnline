@@ -116,7 +116,7 @@ export default function GeneratorForm() {
         <span className="font-semibold text-gray-700 dark:text-gray-200">Identificação (opcional)</span>        <input 
           name="identificacao" 
           className="input input-bordered rounded px-3 py-2 focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:text-white dark:border-gray-600" 
-          placeholder="Ex: Pedido123" 
+          placeholder="Ex: Pedido #001" 
           aria-label="Identificação (opcional)"
         />
       </label>
