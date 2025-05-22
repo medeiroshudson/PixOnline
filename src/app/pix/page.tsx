@@ -31,11 +31,10 @@ export default function PixPage() {
     }),
     [nome, chave, valor, cidade, identificacao, descricao]
   );
-
   useEffect(() => {
     setPix(pix);
     gerarPayload();
-  }, [pix]);
+  }, [pix, setPix, gerarPayload]);
 
   const [copied, setCopied] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
